@@ -260,7 +260,7 @@ z
 
 
 
-Jay-Z's z-score of $5\sigma$ means that $p < 0.0001$, which means his song count is statistically significant.
+Jay-Z's z-score means that p < 0.0001, and therefore his song count is statistically significant.
 
 #### Songs that made it to #1
 
