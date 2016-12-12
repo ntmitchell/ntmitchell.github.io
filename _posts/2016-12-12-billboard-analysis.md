@@ -399,7 +399,7 @@ sns.plt.show()
 ```
 
 
-![png](/images/billboard-analysis-images/output_32_0.png)
+![png](https://ntmitchell.github.io/images/billboard-analysis-images/output_32_0.png)
 
 
 Neither data set appears to be normally distributed, as they are both positively skewed. Therefore we cannot technically apply a two-sample t-test to determine if the mean values are statistically separate. But when we run Welch's t-test, we find:
@@ -564,11 +564,11 @@ sns.plt.show()
 ```
 
 
-![png](/images/billboard-analysis-images/output_40_0.png)
+![png](https://ntmitchell.github.io/images/billboard-analysis-images/output_40_0.png)
 
 
 
-![png](/images/billboard-analysis-images/output_40_1.png)
+![png](https://ntmitchell.github.io/images/billboard-analysis-images/output_40_1.png)
 
 
 
