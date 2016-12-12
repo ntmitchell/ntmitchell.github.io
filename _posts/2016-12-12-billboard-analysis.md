@@ -249,13 +249,6 @@ held_top_spot['genre'].value_counts()
 However the genre data needs to be manually corrected since some songs are miscategorized. For example:
 
 
-```python
-data.loc[data['artist_name'] == 'Faith Hill', ['track', 'artist_name', 'genre']]
-```
-
-
-
-
 <div>
 <table border="1" class="dataframe">
   <thead>
