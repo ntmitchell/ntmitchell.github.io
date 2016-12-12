@@ -232,7 +232,7 @@ songs_on_the_billboard[0:10]
 
 
 
-It appears that Jay-Z was the most popular, but let's make sure that it's a significant value:
+It appears that Jay-Z was the most popular overall, but let's calculate his z score and p value to be sure that it's not from random chance:
 
 
 ```python
