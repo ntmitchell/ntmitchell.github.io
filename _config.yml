@@ -245,5 +245,4 @@ defaults:
       comments: true
       share: true
       related: true
-header:
-  image: "https://upload.wikimedia.org/wikipedia/commons/3/36/Широка_поляна1.jpg"
+    
