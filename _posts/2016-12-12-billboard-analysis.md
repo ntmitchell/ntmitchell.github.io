@@ -199,9 +199,6 @@ data[['date.entered', 'date.peaked']].head().dtypes
     4   2000-08-05  2000-10-14
 
 
-
-
-
     date.entered    datetime64[ns]
     date.peaked     datetime64[ns]
     dtype: object
@@ -516,94 +513,9 @@ top_10_longest_stay_dataframe[['track', 'artist_name', 'weeks_on_billboard']]
 Let's see how songs move on the billboard. We'll look at the songs that reached #1 first, and then the songs that stayed on the billboard the longest.
 
 
-```python
-# First the #1 ranked songs
-
-# Convert the x#.week column headers into a time series to use for the x axis
-top_tracks_weeks_timeseries = held_top_spot.columns[7:].str.extract('(\d\d?)', expand = True)
-
-# Create a dataframe from the weekly ranking data
-time_dependent_top_rankings = data.ix[held_top_spot.index,7:].transpose()
-
-# Rename columns to the track names
-time_dependent_top_rankings.rename(columns = held_top_spot['track'], inplace = True)
-
-# Plot the data
-time_dependent_top_rankings.plot.line(x = top_tracks_weeks_timeseries[0], figsize = (16, 7), colormap = sns.set_palette(sns.color_palette(palette = 'hls', n_colors = 20)))
-
-# Plot formatting
-plt.gca().invert_yaxis()
-plt.title("Songs That Reached #1 Rank vs. Time", fontsize = 'xx-large')
-plt.xlabel("Time (weeks)", fontsize = 'large')
-plt.ylabel("Rank in Billboard list", fontsize = 'large')
-
-sns.plt.show()
-
-
-# Now for the longest-staying songs:
-
-# Create a dataframe from the weekly ranking data
-time_dependent_longest_stay = data.ix[top_10_longest_stay_dataframe.index,7:].transpose()
-
-# Rename columns to the track names
-time_dependent_longest_stay.rename(columns = longest_stay_dataframe['track'], inplace = True)
-
-# Convert the x#.week column headers into a time series to use for the x axis
-data_weeks_from_timeseries = data.columns[7:].str.extract('(\d\d?)', expand = True)
-
-# Plot the data
-time_dependent_longest_stay.plot.line(x = data_weeks_from_timeseries[0], figsize = (16, 7), colormap = sns.set_palette(sns.color_palette(palette = 'hls', n_colors = 12)))
-
-# Plot formatting
-plt.gca().invert_yaxis()
-plt.title("Ten Longest-Listed Songs Rank vs. Time", fontsize = 'xx-large')
-plt.xlabel("Time (weeks)", fontsize = 'large')
-plt.ylabel("Rank in Billboard list", fontsize = 'large')
-
-sns.plt.show()
-```
-
 
 ![png]({{ site.url }}/images/billboard-analysis-images/output_40_0.png)
 
 
 
 ![png]({{ site.url }}/images/billboard-analysis-images/output_40_1.png)
-
-
-
-```python
-held_top_spot.merge(top_10_longest_stay_dataframe, how = 'outer')['artist_name'].value_counts()
-```
-
-
-
-
-    Christina Aguilera    2
-    Destiny's Child       2
-    Creed                 2
-    Lonestar              1
-    Faith Hill            1
-    Enrique Iglesias      1
-    matchbox twenty       1
-    N'Sync                1
-    Sisqo                 1
-    Toni Braxton          1
-    Madonna               1
-    Nelly                 1
-    Savage Garden         1
-    Aaliyah               1
-    3 Doors Down          1
-    Mariah Carey          1
-    Santana               1
-    Vertical Horizon      1
-    Janet                 1
-    Joe                   1
-    Name: artist_name, dtype: int64
-
-
-
-
-```python
-
-```
