@@ -1,6 +1,8 @@
-
-# Project 2: Analyzing Billboard Data
-
+---
+layout: post
+title: "Analyzing Billboard 100 for 2000"
+date: 2016-12-12
+---
 ### Project Summary
 
 >On next week's episode of the 'Are You Entertained?' podcast, we're going to be analyzing the latest generation's guilty pleasure- the music of the '00s. Our Data Scientists have poured through Billboard chart data to analyze what made a hit soar to the top of the charts, and how long they stayed there. Tune in next week for an awesome exploration of music and data as we continue to address an omnipresent question in the industry- why do we like what we like?
@@ -55,28 +57,28 @@ print(raw_data.head())
     2  2000        Savage Garden                     I Knew I Loved You  4:07   
     3  2000              Madonna                                  Music  3:45   
     4  2000  Aguilera, Christina  Come On Over Baby (All I Want Is You)  3:38   
-    
+
       genre date.entered date.peaked  x1st.week  x2nd.week  x3rd.week     ...      \
     0  Rock   2000-09-23  2000-11-18         78       63.0       49.0     ...       
     1  Rock   2000-02-12  2000-04-08         15        8.0        6.0     ...       
     2  Rock   1999-10-23  2000-01-29         71       48.0       43.0     ...       
     3  Rock   2000-08-12  2000-09-16         41       23.0       18.0     ...       
     4  Rock   2000-08-05  2000-10-14         57       47.0       45.0     ...       
-    
+
        x67th.week  x68th.week  x69th.week  x70th.week  x71st.week  x72nd.week  \
     0         NaN         NaN         NaN         NaN         NaN         NaN   
     1         NaN         NaN         NaN         NaN         NaN         NaN   
     2         NaN         NaN         NaN         NaN         NaN         NaN   
     3         NaN         NaN         NaN         NaN         NaN         NaN   
     4         NaN         NaN         NaN         NaN         NaN         NaN   
-    
+
        x73rd.week  x74th.week  x75th.week  x76th.week  
     0         NaN         NaN         NaN         NaN  
     1         NaN         NaN         NaN         NaN  
     2         NaN         NaN         NaN         NaN  
     3         NaN         NaN         NaN         NaN  
     4         NaN         NaN         NaN         NaN  
-    
+
     [5 rows x 83 columns]
 
 
@@ -117,9 +119,9 @@ print("After rearranging: \n", data['artist_name'][0:5])
     2          Savage Garden
     3                Madonna
     4    Aguilera, Christina
-    Name: artist.inverted, dtype: object 
-    
-    After rearranging: 
+    Name: artist.inverted, dtype: object
+
+    After rearranging:
      0       Destiny's Child
     1               Santana
     2         Savage Garden
@@ -292,7 +294,7 @@ held_top_spot['genre'].value_counts()
 
 
 
-However the genre data needs to be manually corrected since some songs are miscategorized. For example: 
+However the genre data needs to be manually corrected since some songs are miscategorized. For example:
 
 
 ```python
@@ -397,7 +399,7 @@ sns.plt.show()
 ```
 
 
-![png](output_32_0.png)
+![png](/images/billboard-analysis-images/output_32_0.png)
 
 
 Neither data set appears to be normally distributed, as they are both positively skewed. Therefore we cannot technically apply a two-sample t-test to determine if the mean values are statistically separate. But when we run Welch's t-test, we find:
@@ -562,11 +564,11 @@ sns.plt.show()
 ```
 
 
-![png](output_40_0.png)
+![png](/images/billboard-analysis-images/output_40_0.png)
 
 
 
-![png](output_40_1.png)
+![png](/images/billboard-analysis-images/output_40_1.png)
 
 
 
