@@ -1,5 +1,5 @@
 ---
-title: "Analyzing Billboard 100"
+title: "Analyzing Billboard Top 100"
 #layout: post
 date: 2016-12-12
 ---
