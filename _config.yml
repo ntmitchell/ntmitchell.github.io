@@ -10,7 +10,7 @@ locale                   : "en"
 title                    : "A Data Scientist's Notebook"
 title_separator          : "-"
 name                     : "Nathan Mitchell"
-description              : "The blog of a data scientist in training."
+description              :
 url                      : "https://ntmitchell.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "ntmitchell/ntmitchell.github.io"
@@ -79,7 +79,7 @@ analytics:
 author:
   name             : "Nathan Mitchell"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Data scientist-in-training at General Assembly Boston"
+  bio              : "Data scientist student at General Assembly Boston"
   location         : "Boston Area"
   email            : "ntmitchell.01@gmail.com"
   uri              :
