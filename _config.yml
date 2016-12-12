@@ -245,3 +245,5 @@ defaults:
       comments: true
       share: true
       related: true
+      header:
+        overlay_color: "#333"
