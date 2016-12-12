@@ -1,22 +1,11 @@
----
-title: "Analyzing Billboard Data"
-layout: post
-excerpt_separator: "<!--more-->"
-author: Nathan
-categories:
-  - Post Formats
-tags:
-  - music
-  - data analysis
----
+
+# Project 2: Analyzing Billboard Data
 
 ### Project Summary
 
 >On next week's episode of the 'Are You Entertained?' podcast, we're going to be analyzing the latest generation's guilty pleasure- the music of the '00s. Our Data Scientists have poured through Billboard chart data to analyze what made a hit soar to the top of the charts, and how long they stayed there. Tune in next week for an awesome exploration of music and data as we continue to address an omnipresent question in the industry- why do we like what we like?
 >
 >For this project, we'll be posting a companion writeup with visualizations that will offer insights into our conclusions.
-
-<!--more-->
 
 ### Importing Data
 
@@ -66,28 +55,28 @@ print(raw_data.head())
     2  2000        Savage Garden                     I Knew I Loved You  4:07   
     3  2000              Madonna                                  Music  3:45   
     4  2000  Aguilera, Christina  Come On Over Baby (All I Want Is You)  3:38   
-
+    
       genre date.entered date.peaked  x1st.week  x2nd.week  x3rd.week     ...      \
     0  Rock   2000-09-23  2000-11-18         78       63.0       49.0     ...       
     1  Rock   2000-02-12  2000-04-08         15        8.0        6.0     ...       
     2  Rock   1999-10-23  2000-01-29         71       48.0       43.0     ...       
     3  Rock   2000-08-12  2000-09-16         41       23.0       18.0     ...       
     4  Rock   2000-08-05  2000-10-14         57       47.0       45.0     ...       
-
+    
        x67th.week  x68th.week  x69th.week  x70th.week  x71st.week  x72nd.week  \
     0         NaN         NaN         NaN         NaN         NaN         NaN   
     1         NaN         NaN         NaN         NaN         NaN         NaN   
     2         NaN         NaN         NaN         NaN         NaN         NaN   
     3         NaN         NaN         NaN         NaN         NaN         NaN   
     4         NaN         NaN         NaN         NaN         NaN         NaN   
-
+    
        x73rd.week  x74th.week  x75th.week  x76th.week  
     0         NaN         NaN         NaN         NaN  
     1         NaN         NaN         NaN         NaN  
     2         NaN         NaN         NaN         NaN  
     3         NaN         NaN         NaN         NaN  
     4         NaN         NaN         NaN         NaN  
-
+    
     [5 rows x 83 columns]
 
 
@@ -111,7 +100,6 @@ inverted_names_dataframe = data['artist.inverted'].str.split(pat = ',', expand =
 
 
 # Add the two columns together in the correct order and remove any unecessary whitespace
-# ALTERNATE CODE --- data['artist.inverted'] = '{} {}'.format(inverted_names_dataframe[1], inverted_names_dataframe[0])
 names = inverted_names_dataframe[1].str.cat(others = inverted_names_dataframe[0], sep = ' ').str.strip()
 
 # Replace the names in artist.converted with the correct arrangement
@@ -129,9 +117,9 @@ print("After rearranging: \n", data['artist_name'][0:5])
     2          Savage Garden
     3                Madonna
     4    Aguilera, Christina
-    Name: artist.inverted, dtype: object
-
-    After rearranging:
+    Name: artist.inverted, dtype: object 
+    
+    After rearranging: 
      0       Destiny's Child
     1               Santana
     2         Savage Garden
@@ -231,16 +219,16 @@ songs_on_the_billboard[0:10]
 
 
 
-    Jay-Z               5
-    Whitney Houston     4
-    The Dixie Chicks    4
-    Sisqo               3
-    Destiny's Child     3
-    Kelly Price         3
-    DMX                 3
-    Limp Bizkit         3
-    Britney Spears      3
-    Carl Thomas         3
+    Jay-Z                  5
+    Whitney Houston        4
+    The Dixie Chicks       4
+    The Backstreet Boys    3
+    Sisqo                  3
+    Toni Braxton           3
+    Britney Spears         3
+    LeAnn Rimes            3
+    Kelly Price            3
+    SheDaisy               3
     Name: artist_name, dtype: int64
 
 
@@ -260,7 +248,7 @@ z
 
 
 
-Jay-Z's z-score means that p < 0.0001, and therefore his song count is statistically significant.
+Jay-Z's z-score of $5\sigma$ means that $p < 0.0001$, which means his song count is statistically significant.
 
 #### Songs that made it to #1
 
@@ -304,7 +292,7 @@ held_top_spot['genre'].value_counts()
 
 
 
-However the genre data needs to be manually corrected since some songs are miscategorized. For example:
+However the genre data needs to be manually corrected since some songs are miscategorized. For example: 
 
 
 ```python
@@ -343,37 +331,88 @@ data.loc[data['artist_name'] == 'Faith Hill', ['track', 'artist_name', 'genre']]
 
 
 
-# How long did these songs stay at the #1 spot?
+#### Time to top
+
+How long does it take for the top songs to reach the #1 spot?
 
 
 ```python
-weeks_on_top = held_top_spot.ix[:, held_top_spot.apply(min, axis = 0) == 1].count(axis = 1)
-weeks_on_top
+# Time to top refers to the songs that reached #1
+time_to_top = (held_top_spot['date.peaked'] - held_top_spot['date.entered']).dt.days
+time_to_top.describe()
 ```
 
 
 
 
-    0     16
-    1     15
-    2     16
-    3     14
-    4     14
-    5     14
-    6     16
-    7     14
-    8     15
-    9     14
-    10    14
-    11    14
-    12    16
-    13    16
-    14    16
-    15    16
-    16    14
-    dtype: int64
+    count     17.000000
+    mean      94.705882
+    std       60.678213
+    min       35.000000
+    25%       56.000000
+    50%       84.000000
+    75%       91.000000
+    max      273.000000
+    dtype: float64
 
 
+
+Let's compare this to the entire dataset:
+
+
+```python
+# Time to peak calculates over all songs
+time_to_peak_all = (data['date.peaked'] - data['date.entered']).dt.days
+time_to_peak_all.describe()
+```
+
+
+
+
+    count    317.000000
+    mean      52.246057
+    std       40.867601
+    min        0.000000
+    25%       21.000000
+    50%       49.000000
+    75%       70.000000
+    max      315.000000
+    dtype: float64
+
+
+
+Do these data have statistically different means? We can try performing Welch's t-test, but first we need to see if the datasets have normal distributions.
+
+
+```python
+sns.distplot(time_to_top, norm_hist = True, bins = 15, label = 'Songs that reached #1', kde = False)
+sns.distplot(time_to_peak_all, norm_hist = True, bins = 20, label = 'All songs', kde = False)
+
+# Plot formatting
+sns.set_palette(sns.color_palette(palette = 'hls', n_colors = 2))
+plt.xlim(xmin = 0)
+plt.legend()
+
+sns.plt.show()
+```
+
+
+![png](output_32_0.png)
+
+
+Neither data set appears to be normally distributed, as they are both positively skewed. Therefore we cannot technically apply a two-sample t-test to determine if the mean values are statistically separate. But when we run Welch's t-test, we find:
+
+
+```python
+peak_vs_top_t_statistic = scipy.stats.ttest_ind(time_to_top, time_to_peak_all, equal_var = False)
+print("t-statistic: {}\np-value: {}".format(peak_vs_top_t_statistic[0].round(3), peak_vs_top_t_statistic[1].round(3)))
+```
+
+    t-statistic: 2.851
+    p-value: 0.011
+
+
+This would have let us reject the null hypothesis and state that the songs that reached #1 are statistically different from other songs.
 
 #### Songs that stayed the longest time on the billboard
 
@@ -523,118 +562,11 @@ sns.plt.show()
 ```
 
 
-![png](https://ntmitchell.github.io/_posts/images/Project_2_images/output_32_0.png)
+![png](output_40_0.png)
 
 
 
-![png](https://ntmitchell.github.io/_posts/images/Project_2_images/output_32_1.png)
-
-
-#### Time to top
-
-How long does it take for the top songs to reach the #1 spot?
-
-
-```python
-# Time to top refers to the songs that reached #1
-time_to_top = (held_top_spot['date.peaked'] - held_top_spot['date.entered']).dt.days
-time_to_top.describe()
-```
-
-
-
-
-    count     17.000000
-    mean      94.705882
-    std       60.678213
-    min       35.000000
-    25%       56.000000
-    50%       84.000000
-    75%       91.000000
-    max      273.000000
-    dtype: float64
-
-
-
-Let's compare this to the entire dataset:
-
-
-```python
-# Time to peak calculates over all songs
-time_to_peak_all = (data['date.peaked'] - data['date.entered']).dt.days
-time_to_peak_all.describe()
-```
-
-
-
-
-    count    317.000000
-    mean      52.246057
-    std       40.867601
-    min        0.000000
-    25%       21.000000
-    50%       49.000000
-    75%       70.000000
-    max      315.000000
-    dtype: float64
-
-
-
-Do these data have statistically different means? We can try performing Welch's t-test, but first we need to see if the datasets have normal distributions.
-
-
-```python
-sns.distplot(time_to_top, norm_hist = True, bins = 15, label = 'Songs that reached #1')
-sns.distplot(time_to_peak_all, norm_hist = True, bins = 20, label = 'All songs')
-
-# Plot formatting
-sns.set_palette(sns.color_palette(palette = 'hls', n_colors = 2))
-plt.xlim(xmin = 0)
-plt.legend()
-
-sns.plt.show()
-```
-
-
-
-![png](https://ntmitchell.github.io/_posts/images/Project_2_images/output_39_1.png)
-
-
-Neither data set appears to be normally distributed, as they are both positively skewed. Therefore we cannot technically apply a two-sample t-test to determine if the mean values are statistically separate. But when we run Welch's t-test, we find:
-
-
-```python
-peak_vs_top_t_statistic = scipy.stats.ttest_ind(time_to_top, time_to_peak_all, equal_var = False)
-print("t-statistic: {}\np-value: {}".format(peak_vs_top_t_statistic[0].round(3), peak_vs_top_t_statistic[1].round(3)))
-```
-
-    t-statistic: 2.851
-    p-value: 0.011
-
-
-This would have let us reject the null hypothesis and state that the songs that reached #1 are statistically different from other songs.
-
-## Comparing the curves for #1 songs vs. all songs
-
-# Find the first week each song made the #1 rank, then return the weeknumber as an integer
-first_week_held_top_spot = held_top_spot.loc[:, "x1st.week":"x76th.week"].idxmin(axis = 1).str.extract('(\d\d?)', expand = True).astype(int)
-first_week_at_1st_shifted_index = - first_week_held_top_spot[0]
-
-# Plot the data
-sns.plt.scatter(x = (top_tracks_weeks_timeseries[0].astype(int) - first_week_at_1st_shifted_index[song]), y = time_dependent_top_rankings, figsize = (16, 7), colormap = sns.set_palette(sns.color_palette(palette = 'hls', n_colors = 20)))
-
-# Plot formatting
-plt.gca().invert_yaxis()
-plt.legend()
-plt.title("Songs That Reached #1 Rank vs. Time", fontsize = 'xx-large')
-plt.xlabel("Time (weeks)", fontsize = 'large')
-plt.ylabel("Rank in Billboard list", fontsize = 'large')
-
-sns.plt.show()
-# Take the median of the weeknumber list we found before, and find the difference between each song's peak and the median.
-# ^^ WHY? JUST SHIFT EACH COLUMN INDEX BY THIS VALUE
-#top_tracks_weeks_timeseries.astype(int) - int(top_tracks_weeks_timeseries[0].median())
-
+![png](output_40_1.png)
 
 
 
@@ -648,44 +580,24 @@ held_top_spot.merge(top_10_longest_stay_dataframe, how = 'outer')['artist_name']
     Christina Aguilera    2
     Destiny's Child       2
     Creed                 2
-    Joe                   1
-    Santana               1
-    N'Sync                1
-    Toni Braxton          1
-    Vertical Horizon      1
-    3 Doors Down          1
     Lonestar              1
-    Aaliyah               1
     Faith Hill            1
-    Sisqo                 1
-    Madonna               1
-    matchbox twenty       1
     Enrique Iglesias      1
-    Janet                 1
-    Mariah Carey          1
+    matchbox twenty       1
+    N'Sync                1
+    Sisqo                 1
+    Toni Braxton          1
+    Madonna               1
     Nelly                 1
     Savage Garden         1
+    Aaliyah               1
+    3 Doors Down          1
+    Mariah Carey          1
+    Santana               1
+    Vertical Horizon      1
+    Janet                 1
+    Joe                   1
     Name: artist_name, dtype: int64
-
-
-
-
-```python
-data.loc[:, 'x21st.week':'x31st.week'].iloc[0].value_counts()
-```
-
-
-
-
-    15.0    1
-    29.0    1
-    12.0    1
-    10.0    1
-    7.0     1
-    22.0    1
-    31.0    1
-    3.0     1
-    Name: 0, dtype: int64
 
 
 
