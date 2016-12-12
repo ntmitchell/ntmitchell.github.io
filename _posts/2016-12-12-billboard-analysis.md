@@ -8,6 +8,7 @@ date: 2016-12-12
 >On next week's episode of the 'Are You Entertained?' podcast, we're going to be analyzing the latest generation's guilty pleasure- the music of the '00s. Our Data Scientists have poured through Billboard chart data to analyze what made a hit soar to the top of the charts, and how long they stayed there. Tune in next week for an awesome exploration of music and data as we continue to address an omnipresent question in the industry- why do we like what we like?
 
 For this project, I imported and cleaned the data, before computing:
+
 * The most popular artists in 2000
 * The #1 songs in songs in 2000
 * The time it takes for songs to reach #1, compared to the entire list
