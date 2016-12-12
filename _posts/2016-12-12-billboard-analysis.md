@@ -15,7 +15,7 @@ For this project, I imported and cleaned the data, and computed:
 
 ### Importing Data
 
-First we'll look at the data to see what features are available and to get which type conversions might be necessary.
+First we'll look at the data to see what features are available and to see which type conversions might be necessary.
 
     year                 int64
     artist.inverted     object
@@ -67,91 +67,14 @@ First we'll look at the data to see what features are available and to get which
 ### Preparing Data
 
 
-As a matter of preference, let's rearrange the artist names column so that it reads ```first_name last_name```, and rename the column to something more intuitive:
-
-
-    Before rearranging:
-     0        Destiny's Child
-    1                Santana
-    2          Savage Garden
-    3                Madonna
-    4    Aguilera, Christina
-
-    After rearranging:
-     0       Destiny's Child
-    1               Santana
-    2         Savage Garden
-    3               Madonna
-    4    Christina Aguilera
-
-
-Although ```x1st.week``` is an ```int``` type, it won't cause any problems for calculations since the more detailed data type ```float``` overrules it.
-
-I want to convert ```date.entered``` and ```date.peaked``` so I can perform calculations on those values. Take a look at the datetime columns to see how they're written (which could affect the arguments in ```pd.to_datetime()```):
-
-
-```python
-data[['date.entered', 'date.peaked']].head()
-```
-
-
-
-
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date.entered</th>
-      <th>date.peaked</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2000-09-23</td>
-      <td>2000-11-18</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2000-02-12</td>
-      <td>2000-04-08</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1999-10-23</td>
-      <td>2000-01-29</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2000-08-12</td>
-      <td>2000-09-16</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2000-08-05</td>
-      <td>2000-10-14</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
+As a matter of preference, let's rearrange the artist names column so that it reads ```first_name last_name```, and rename the column to something more intuitive. Also, we'll want to convert ```date.entered``` and ```date.peaked``` so we can perform calculations on those values. Take a look at the datetime columns to see how they're written (which could affect the arguments in ```pd.to_datetime()```):
 
 
 ```python
 data[['date.entered', 'date.peaked']] = data[['date.entered', 'date.peaked']].apply(pd.to_datetime, yearfirst = True, errors = 'coerce')
 
-print(data[['date.entered', 'date.peaked']].head())
-data[['date.entered', 'date.peaked']].head().dtypes
+print(data[['date.entered', 'date.peaked']].head().dtypes)
 ```
-
-      date.entered date.peaked
-    0   2000-09-23  2000-11-18
-    1   2000-02-12  2000-04-08
-    2   1999-10-23  2000-01-29
-    3   2000-08-12  2000-09-16
-    4   2000-08-05  2000-10-14
 
 
     date.entered    datetime64[ns]
