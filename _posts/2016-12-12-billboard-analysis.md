@@ -236,9 +236,6 @@ held_top_spot['genre'].value_counts()
     16                  Thank God I Found You        Mariah Carey
 
 
-
-
-
     Rock       15
     Country     1
     Latin       1
