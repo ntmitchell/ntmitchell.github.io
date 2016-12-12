@@ -1,6 +1,7 @@
 ---
 title: "Analyzing Billboard Top 100"
-#layout: post
+header:
+  overlay_color: "#333"
 date: 2016-12-12
 ---
 ### Project Summary
