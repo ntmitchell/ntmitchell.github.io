@@ -1,7 +1,7 @@
 ---
 title: "Analyzing Billboard Top 100"
 header:
-  image: {{ site.url }}/images/billboard-analysis-images/output_40_0.png
+  image: /images/billboard-analysis-images/output_40_0.png
 date: 2016-12-12
 ---
 ### Project Summary
