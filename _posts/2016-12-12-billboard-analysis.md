@@ -1,7 +1,7 @@
 ---
 title: "Analyzing Billboard Top 100"
-header:
-  image: /images/billboard-analysis-images/output_40_0.png
+#header:
+#  overlay_color: "#333"
 date: 2016-12-12
 ---
 ### Project Summary
