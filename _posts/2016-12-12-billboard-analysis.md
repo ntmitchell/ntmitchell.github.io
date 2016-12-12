@@ -398,7 +398,7 @@ plt.legend()
 sns.plt.show()
 ```
 
-{{ site.url }}/assets/screenshot.jpg
+
 ![png]({{ site.url }}/images/billboard-analysis-images/output_32_0.png)
 
 
@@ -564,11 +564,11 @@ sns.plt.show()
 ```
 
 
-![png](https://ntmitchell.github.io/images/billboard-analysis-images/output_40_0.png)
+![png]({{ site.url }}/images/billboard-analysis-images/output_40_0.png)
 
 
 
-![png](https://ntmitchell.github.io/images/billboard-analysis-images/output_40_1.png)
+![png]({{ site.url }}/images/billboard-analysis-images/output_40_1.png)
 
 
 
