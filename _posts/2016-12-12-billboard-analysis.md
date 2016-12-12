@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Analyzing Billboard 100 for 2000"
+title: "Analyzing Billboard 100 "
 date: 2016-12-12
 ---
 ### Project Summary
