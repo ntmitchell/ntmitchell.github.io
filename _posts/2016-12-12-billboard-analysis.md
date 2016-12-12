@@ -15,29 +15,7 @@ For this project, I imported and cleaned the data, and computed:
 
 ### Importing Data
 
-
-```python
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import scipy.stats
-
-%matplotlib inline
-plt.style.use('seaborn-notebook')
-```
-
-
-```python
-raw_data = pd.read_csv("billboard.csv", encoding = "latin1")
-```
-
-Look at the data to see what features are available and to get which type conversions might be necessary.
-
-
-```python
-print(raw_data.dtypes[0:15])
-print(raw_data.head())
-```
+First we'll look at the data to see what features are available and to get which type conversions might be necessary.
 
     year                 int64
     artist.inverted     object
@@ -88,34 +66,9 @@ print(raw_data.head())
 
 ### Preparing Data
 
-Let's first make a copy of the data for us to manipulate, so we can keep ```raw_data``` intact in case we need to refer to it later.
-
-
-```python
-data = raw_data
-```
 
 As a matter of preference, let's rearrange the artist names column so that it reads ```first_name last_name```, and rename the column to something more intuitive:
 
-
-```python
-print("Before rearranging:\n", data['artist.inverted'][0:5], '\n')
-
-# Split the 'artist.inverted' column using commas as delimiters, and return a dataframe
-inverted_names_dataframe = data['artist.inverted'].str.split(pat = ',', expand = True)
-
-
-# Add the two columns together in the correct order and remove any unecessary whitespace
-names = inverted_names_dataframe[1].str.cat(others = inverted_names_dataframe[0], sep = ' ').str.strip()
-
-# Replace the names in artist.converted with the correct arrangement
-data.ix[names.notnull(), 'artist.inverted'] = names[names.notnull()]
-
-# Rename the 'artist.inverted' column to simply 'artist_name'
-data.rename(columns = {'artist.inverted':'artist_name'}, inplace = True)
-
-print("After rearranging: \n", data['artist_name'][0:5])
-```
 
     Before rearranging:
      0        Destiny's Child
@@ -123,7 +76,6 @@ print("After rearranging: \n", data['artist_name'][0:5])
     2          Savage Garden
     3                Madonna
     4    Aguilera, Christina
-    Name: artist.inverted, dtype: object
 
     After rearranging:
      0       Destiny's Child
@@ -131,7 +83,6 @@ print("After rearranging: \n", data['artist_name'][0:5])
     2         Savage Garden
     3               Madonna
     4    Christina Aguilera
-    Name: artist_name, dtype: object
 
 
 Although ```x1st.week``` is an ```int``` type, it won't cause any problems for calculations since the more detailed data type ```float``` overrules it.
