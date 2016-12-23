@@ -5,6 +5,9 @@ header:
 date: 2016-12-22
 ---
 
+Here's a bit of code from a class project, in which we want to find a way to predict data science salaries in Boston.
+
+We decided to employ web scraping to job listings on Indeed.com. We settled on examining features such as job title, years of experience, company, and keywords like Python. 
 
 ```python
 from urllib.request import urlopen
