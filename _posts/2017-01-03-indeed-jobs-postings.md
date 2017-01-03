@@ -576,7 +576,9 @@ skl_logreg_model_coefficients = pd.DataFrame(data = skl_model.coef_, index = ['c
 
 
 
-#<a name="Part-II"></a> Part II: Report
+<a name="Part-II"></a>
+
+# Part II: Report
 
 Since each company has different data science needs, we expected each job posting's requirements to vary by a large range. We therefore decided to focus our analysis on a few key pieces of information in each job posting, specifically:
 
