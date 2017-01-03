@@ -5,11 +5,10 @@ header:
 date: 2017-01-03
 tags: Web scraping, Indeed.com, Data science jobs
 ---
-# Web Scraping Indeed.com to Predict Salaries
 
 For this project, we used a set of characteristics to predict the salaries for data science jobs in the Boston area. We analyzed search results from Indeed.com, an online jobs board, and highlighted key phrases in each job posting. We also determined if each job's salary is above a threshold value. We used logistic regression to model this data. Machine learning and python experience were the strongest predictors of salary. Machine learning, python and scientist were the strongest predictors of salary. The model had poor precision --- approximately 63% precision and recall, where random guesses could have achieved 57% --- which may have been caused by variability in the source salary data.
 
-Part I outlines the code used. [Part II](#Part-II:-Report) contains the writeup.
+Part I outlines the code used. [Part II](#Part-II\:-Report) contains the writeup.
 
 ## Part I: Code
 
