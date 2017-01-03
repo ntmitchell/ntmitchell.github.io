@@ -1,13 +1,16 @@
 ---
-title: "Web Scraping Indeed.com for job IDs and keyword"
+title: "Web Scraping practice: retrieving job IDs and keywords from Indeed.com"
 header:
   overlay_color: "#333"
 date: 2016-12-22
+tags: Web scraping, Indeed.com
 ---
 
-Here's a bit of code from a class project, in which we want to find a way to predict data science salaries in Boston.
+Here's a bit of code from a class project.
 
-We decided to employ web scraping to job listings on Indeed.com. We settled on examining features such as job title, years of experience, company, and keywords like Python. 
+In about two months, everyone here will be searching through job boards to find the next steps in our careers. For this project we want to find a way to predict data science salaries in Boston.
+
+We scanned Indeed.com and scraped information related to features such as job title, years of experience, company, and keywords like Python. Only a few listings had salary information or descriptions we could search through. Therefore we found most of our data by manipulating the search query, and trusting Indeed's backend processing to deliver relevant results.
 
 ```python
 from urllib.request import urlopen
