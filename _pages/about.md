@@ -1,5 +1,5 @@
 ---
-title: "About the author"
+title: "About the Author"
 permalink: /about/
 ---
 
