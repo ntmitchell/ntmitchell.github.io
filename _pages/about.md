@@ -1,5 +1,6 @@
 ---
 title: "About the author"
+permalink: /about/
 ---
 
 My background might look disconnected at first glance. But beneath the surface there's a common thread: I love researching and sharing newly uncovered insights.
