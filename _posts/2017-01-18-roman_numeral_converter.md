@@ -15,7 +15,12 @@ We were to write two functions that, when given any integer from 1 through 1000,
 
 Lastly, we wanted to verify that the functions work. We compared our outputs to a sample of "solved" numbers, and also fed the results from one function into the other to make sure they gave consistent results.
 
+
 # Functions
+
+The numerals-to-number converter looks at a character, determines if it's corresponding value is less than or greater than its neighbor, and determines if the value should be added or subtracted from the total. For example, XXIV becomes [10, 10, -1, 5], which sums to 24.
+
+My number-to-numeral converter is a little more complicated. It relies on the fact that, aside from 1, individual Roman numerals are written to represent base-10 multiples of 5 or 10 (i.e., 5, 50, 500).
 
 ```python
 def str_to_int(numeral_string):
@@ -86,11 +91,12 @@ from numpy import vectorize
 
 
 ```python
-SUCCESS = True
+success = True
 for number in range(1,1000):
     if str_to_int(int_to_string(number)) != number:
+        success = False
         print("Failed on {}.".format(number))
-if SUCCESS:
+if success:
     print("All numbers converted correctly.")
 ```
 
