@@ -6,7 +6,7 @@ date: 2017-02-24
 ---
 # Predicting Coffee Prices Using Random Forest Regression
 
-Temperature and production data were combined and used to model a benchmark indicator for global coffee prices. A random forest regressor was optimized and used to model the data with a 6-month lag between data and predictions. The model is strongly correlated with results, although it appears to have a strong bias problem.
+Temperature and production data were combined and used to model a benchmark indicator for global coffee prices. A random forest regressor was optimized and used to model the data with a 6-month lag between data and predictions. The model is strongly correlated with results, although it appears to have a strong bias problem. Predictions were made for early 2017, which have thus far proved directionally accurate.
 
 [Part I](#Part-I) lists the modeling code. Data acquisition and cleaning were kept in separate programming objects for readability and easy data manipulation.
 
