@@ -4,7 +4,6 @@ header:
   overlay_color: "#333"
 date: 2017-02-24
 ---
-# Predicting Coffee Prices Using Random Forest Regression
 
 Temperature and production data were combined and used to model a benchmark indicator for global coffee prices. A random forest regressor was optimized and used to model the data with a 6-month lag between data and predictions. The model is strongly correlated with results, although it appears to have a strong bias problem. Predictions were made for early 2017, which have thus far proved directionally accurate.
 
@@ -599,7 +598,7 @@ def figure_forecasted_vs_actual_prices_from_2016_to_present():
 
 Coffee prices are volatile and difficult to predict. (This is especially true when compared to coffee futures prices, which can be strongly affected by irrational investor speculation.) The USDA's Foreign Agricultural Service issues semi-annual reports on coffee production; among the influences in its reports are previous production volumes, droughts, abnormally warm temperatures, frosts, pest incidences, diseases that affect coffee plants, and labor shortages. However these influences are quantifiable and, to a limited degree, predictable.
 
-Other analyses have focused on production volume to predict global prices. In 1955, Henry Hopp and Richard J. Foote found that global prices between 1882 and 1949 were principally associated with coffee held in storehouses and Brazilian exports. (Hopp, H., and Foote, R. <a href="http://econpapers.repec.org/RePEc:oup:ajagec:v:37:y:1955:i:3:p:429-438">A Statistical Analysis of Factors That Affect Prices of Coffee</a>, American Journal of Agricultural Economics, 1955.) It is likely this relationship still holds, however the market has evolved considerably since then. This analysis will consider past production trends, ending stocks (the amount of coffee held in storehouses before exporting), and frost incidences, for the main coffee producing countries.
+Other analyses have focused on production volume to predict global prices. In 1955, Henry Hopp and Richard J. Foote found that global prices between 1882 and 1949 were principally associated with coffee held in storehouses and Brazilian exports. (Hopp, H., and Foote, R. <a href="http://econpapers.repec.org/RePEc:oup:ajagec:v:37:y:1955:i:3:p:429-438.">A Statistical Analysis of Factors That Affect Prices of Coffee</a>, American Journal of Agricultural Economics, 1955.) It is likely this relationship still holds, however the market has evolved considerably since then. This analysis will consider past production trends, ending stocks (the amount of coffee held in storehouses before exporting), and frost incidences, for the main coffee producing countries.
 
 
 ### Data
@@ -614,40 +613,18 @@ A large and continual complication came from the ICO grouping countries into tra
 
 
 
-```python
-figure_ICO_composite_indicator_since_1960()
-print("""Fig. 1: The ICO composite indicator price over time. \
-Notable events include a devastating frost in Brazil in 1975, 1984 and 1994; \
-the collapse of the quota system in 1989 and the subsequent drop in price; \
-demand exceeding supply in 2011, paired with poor production caused by high rainfall in 2010.""")
-
-figure_ICO_composite_indicator_modeled_by_ICO_categories()
-print("""Fig. 2: The ICO composite indicator prices modeled by the producing categories versus actual indicator prices. \
-The strongly linear relationship means that the category weights used to calculate the composite \
-have predictable effects, and can be ignored for this analysis.""")
-
-```
-
-
-![png](output_39_0.png)
+![png]({{ site.url }}/images/predicting-coffee-prices-images/output_39_0.png)
 
 
     Fig. 1: The ICO composite indicator price over time. Notable events include a devastating frost in Brazil in 1975, 1984 and 1994; the collapse of the quota system in 1989 and the subsequent drop in price; demand exceeding supply in 2011, paired with poor production caused by high rainfall in 2010.
 
 
 
-![png](output_39_2.png)
+![png]({{ site.url }}/images/predicting-coffee-prices-images/output_39_2.png)
 
 
     Fig. 2: The ICO composite indicator prices modeled by the producing categories versus actual indicator prices. The strongly linear relationship means that the category weights used to calculate the composite have predictable effects, and can be ignored for this analysis.
 
-
-
-```python
-for category in ICO_categories:
-    print("{}\n{}\n".format(category, ICO_Composite_Indicator().list_countries_in_ICO_category(category)))
-
-```
 
     Brazilian Naturals
     ['Brazil', 'Ethiopia', 'Paraguay', 'Philippines', 'Thailand', 'Timor-Leste', 'Vietnam', 'Yemen']
@@ -671,33 +648,15 @@ Temperature data was obtained from Berkeley Earth, which is an independent organ
 
 
 
-```python
-figure_coffee_production_for_each_ICO_category()
-print("""Fig. 3: Annual production is aggregated into ICO categories. \
-Coffee plant produce berries every other year; \
-this biennial effect is most pronounced in Brazil, and therefore in the Brazilian Naturals category.""")
 
-```
-
-
-![png](output_42_0.png)
+![png]({{ site.url }}/images/predicting-coffee-prices-images/output_42_0.png)
 
 
     Fig. 3: Annual production is aggregated into ICO categories. Coffee plant produce berries every other year; this biennial effect is most pronounced in Brazil, and therefore in the Brazilian Naturals category.
 
 
 
-```python
-figure_map_of_weather_stations_in_coffee_producing_countries()
-print("""Fig. 4: Weather stations in the Berkeley Earth dataset that are located in ideal coffee-growing conditions. \
-Compare to the following map from Climate.gov.""")
-
-from IPython.display import Image
-Image("https://www.climate.gov/sites/default/files/CoffeeGrowingCountries_large.jpg")
-```
-
-
-![png](output_43_0.png)
+![png]({{ site.url }}/images/predicting-coffee-prices-images/output_43_0.png)
 
 
     Fig. 4: Weather stations in the Berkeley Earth dataset that are located in ideal coffee-growing conditions. Compare to the following map from Climate.gov for general comparison.
@@ -706,7 +665,7 @@ Image("https://www.climate.gov/sites/default/files/CoffeeGrowingCountries_large.
 
 
 
-![jpeg](output_43_2.jpeg)
+![png]({{ site.url }}/images/predicting-coffee-prices-images/output_43_2.png)
 
 
 
@@ -722,27 +681,14 @@ The resulting dataset had 324 observations and approximately 87 features. The nu
 Principal component analysis was attempted to further reduce the number of features, and decrease the chances of overfitting to the data, however the standardized variations were not easily separable. (See figure 6 below.)
 
 
-
-```python
-figure_cumulative_production_shares_per_coffee_type_by_country()
-print("""Fig. 5: Cumulative shares of coffee production by country. \
-As can be seen, less than a dozen countries account for more than 90% of global production.""")
-
-figure_explained_variance_cumulative_sum()
-print("""Fig. 6: The cumulative sums of explained variances. \
-The gradual increase of eigenvalues means that no eigenvectors were particularly good at separating the data.
-""")
-```
-
-
-![png](output_46_0.png)
+![png]({{ site.url }}/images/predicting-coffee-prices-images/output_46_0.png)
 
 
     Fig. 5: Cumulative shares of coffee production by country. As can be seen, less than a dozen countries account for more than 90% of global production.
 
 
 
-![png](output_46_2.png)
+![png]({{ site.url }}/images/predicting-coffee-prices-images/output_46_2.png)
 
 
     Fig. 6: The cumulative sums of explained variances. The gradual increase of eigenvalues means that no eigenvectors were particularly good at separating the data.
@@ -756,40 +702,23 @@ The final dataset included information related to Brazil, Colombia, Cote d'Ivoir
 The results of modeling are shown in figure 7 below. The model was used to to forecast ICO composite indicator prices for early 2017. (See figure 8.)
 
 
-```python
-figure_prices_vs_model_for_1990_to_present()
-figure_prices_vs_model_for_2013_to_2016()
-print("""Fig. 7: Model (red) compared to actual indicator prices (blue). The score is the cross validation score.""")
-
-figure_2017Q1_forecast()
-figure_forecasted_vs_actual_prices_from_2016_to_present()
-print("""Fig. 8: Predicted indicator prices for early 2017. \
-The information for the ICO composite indicator prices in the bottom plot was manually retrieved from the ICO's website.""")
-
-```
-
-
-![png](output_50_0.png)
-
+![png]({{ site.url }}/images/predicting-coffee-prices-images/output_50_0.png)
 
     Random forest model score: 0.9569884965546481
 
 
 
-![png](output_50_2.png)
-
+![png]({{ site.url }}/images/predicting-coffee-prices-images/output_50_2.png)
 
     Random forest model score: 0.9569884965546481
     Fig. 7: Model (red) compared to actual indicator prices (blue). The score is the cross validation score.
 
 
 
-![png](output_50_4.png)
+![png]({{ site.url }}/images/predicting-coffee-prices-images/output_50_4.png)
 
 
-
-![png](output_50_5.png)
-
+![png]({{ site.url }}/images/predicting-coffee-prices-images/output_50_5.png)
 
     Fig. 8: Predicted indicator prices for early 2017. The information for the ICO composite indicator prices in the bottom plot was manually retrieved from the ICO's website.
 
@@ -812,8 +741,3 @@ After increasing the number of observations, there are additional features that 
 Lastly, before any business applications of this (or similar) analysis is realized, prediction intervals must be applied to the forecasts. Methods for calculating these intervals using python are not easily found; indeed, this may be analysis better suited to other programming languages like `R`. A computationally-intensive python approach is possible, however it involves calculating the model error obtained when fitting models to data increasingly in the past of a specific point of interest.
 
 If given more time, I would strive to make these improvements to this analysis, in this order.
-
-
-```python
-
-```
