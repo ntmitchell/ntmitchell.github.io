@@ -665,7 +665,7 @@ Temperature data was obtained from Berkeley Earth, which is an independent organ
 
 
 
-![png]({{ site.url }}/images/predicting-coffee-prices-images/output_43_2.jpeg)
+![jpeg]({{ site.url }}/images/predicting-coffee-prices-images/output_43_2.jpeg)
 
 
 
