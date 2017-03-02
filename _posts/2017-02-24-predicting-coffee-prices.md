@@ -35,7 +35,7 @@ You remember that there were some large price spikes caused by frosts in Brazil.
 
 
 ![png]({{ site.url }}/images/predicting-coffee-prices-images/Mapped-weather-stations.png)
-This data came from Berkeley Earth, an independent organization that tracks global temperatures and merges and cross-validates 16 datasets. These dots represent the weather stations in the data that are located in latitude and elevation sweet spots for each species. There is no apparent method for quantifying frost risk, so I approximated it by $\text{risk } = \frac{1}{T^2}$, where $T$ is the minimum monthly temperature in degrees Celsius.
+This data came from Berkeley Earth, an independent organization that tracks global temperatures and merges and cross-validates 16 datasets. These dots represent the weather stations in the data that are located in latitude and elevation sweet spots for each species. There is no apparent method for quantifying frost risk, so I approximated it by `risk = T^-2`, where `T` is the minimum monthly temperature in degrees Celsius. \(\latex T^-2\)
 
 ![png]({{ site.url }}/images/predicting-coffee-prices-images/ICO-production-categories.png)
 When aggregating its data, ICO groups producing countries into 4 categories, based on the main export for each country and how the coffee is processed. To simplify my model, I examined data from the top 5 producers of each species, a list of 9 countries (since Brazil is in both), which captured 73% of arabica and 78% of robusta global exports.”
@@ -49,7 +49,7 @@ Also, just an interesting side note, you can see the Brazilian Naturals category
 
 ### Data Preparation
 
-I imported the data and performed standard data cleaning and formatting, like converting certain strings into datetime values. Only three things stand out in the processing phase: first, filtering the weather stations based on their latitude and elevation, as described above. Second, Berkeley Earth records days using a decimal notation ($$\text{January } 25, 2005 = 2005 + (25 - 0.5)/365 =2005.067$$) which I had to change into a usable format. Third, I had to convert the annual production data to compare it to the other data, which was monthly. I did this by filling the gaps with the previous recorded value (a technique called padding or forward-filling).
+I imported the data and performed standard data cleaning and formatting, like converting certain strings into datetime values. Only three things stand out in the processing phase: first, filtering the weather stations based on their latitude and elevation, as described above. Second, Berkeley Earth records days using a decimal notation (e.g., 2005.067) which I had to change into a usable format (2005.067 = 2005 + (25 - 0.5)/365 = January 25, 2005). Third, I had to convert the annual production data to compare it to the other data, which was monthly. I did this by filling the gaps with the previous recorded value, a technique called padding or forward-filling.
 
 ### Modeling
 
