@@ -97,10 +97,12 @@ So the main takeaway is I’m going to hold off on buying coffee futures for a f
 
 ### References
 
-Hopp, H., and Foote, R. <a href="http://econpapers.repec.org/RePEc:oup:ajagec:v:37:y:1955:i:3:p:429-438.">A Statistical Analysis of Factors That Affect Prices of Coffee</a>, American Journal of Agricultural Economics, 1955.
+Hopp, H., and Foote, R. <a href="http://econpapers.repec.org/RePEc:oup:ajagec:v:37:y:1955:i:3:p:429-438.">A Statistical Analysis of Factors That Affect Prices of Coffee</a>. American Journal of Agricultural Economics, 1963.
 
-Yorgason, V. The International Coffee Agreement: Prospect and Retrospect. Development and Change, 1976, 7: 207–221.
+Bilder, Richard B. <a href="https://www.jstor.org/stable/1190607">The International Coffee Agreement: A Case History in Negotiation</a>. Law and Contemporary Problems, 1963, vol. 28, no. 2, p. 328–391.
 
-“Coffee Frosts: Effects of Frost on South American Coffee Beans”. Coffeeresearch.org. Accessed February 2017.
+Yorgason, V. <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1467-7660.1976.tb00709.x/full">The International Coffee Agreement: Prospect and Retrospect</a>. Development and Change, 1976, vol. 7, no. 2, p. 207–221.
 
-Form 10-K. Starbucks Corporation, 2016
+Coffeeresearch.org. <a href="http://www.coffeeresearch.org/market/frost.htm">Effects of Frost on South American Coffee Beans</a>. Accessed February 2017.
+
+Starbucks Corporation. <a href = "http://s21.q4cdn.com/369030626/files/doc_financials/2016/Annual/FY16-Annual-Report-on-Form-10-K.pdf">Fiscal 2016 Annual Report</a>. Starbucks Corporation, Form 10-K, 2016, p. 7.
