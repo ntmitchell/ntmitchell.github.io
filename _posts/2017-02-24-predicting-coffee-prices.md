@@ -84,7 +84,7 @@ Finally, as of writing this, I haven’t found a good way to add confidence or p
 
 ## But wait … What about your latte?
 
-That I can't directly answer. While the model suggests raw coffee will become more expensive over the next few months, how much companies charge consumers depends on their internal business decisions. For example, while researching for this project, [J.M. Smuckers announced it would increase](http://www.prnewswire.com/news-releases/the-j-m-smucker-company-announces-coffee-price-increases-300388983.html) its ground coffee prices by an average of 6%. Smuckers own brands like Folgers and Cafe Bustelo, and also is licensed to sell Dunkin Donuts brand ground coffee.
+That I can't directly answer. While the model suggests raw coffee will become more expensive over the next few months, how much companies charge consumers depends on their internal business decisions. For example, while researching for this project, J.M. Smuckers announced [it would increase its ground coffee prices](http://www.prnewswire.com/news-releases/the-j-m-smucker-company-announces-coffee-price-increases-300388983.html) by an average of 6%. Smuckers own brands like Folgers and Cafe Bustelo, and also is licensed to sell Dunkin Donuts brand ground coffee.
 
 But what I can do is …
 
