@@ -63,7 +63,7 @@ Now, the results
 Here is a plot of my model and the actual indicator prices between 1990 and 2016. It’s not easy to see because even after cross validation the model achieved 0.95 R2, which is a measure of goodness of fit.
 
 ![png]({{ site.url }}/images/predicting-coffee-prices-images/Predictions-vs-Actual-from-2013-to-2016.png)
-This is a zoomed in view of the previous plot to show the last three years.
+This is a zoomed-in view of the previous plot to show the last three years.
 
 It looks great, but I must be cautious when interpreting my model’s accuracy. Having only 27 years of data limits the number of price spikes it captures. It can also cause a dimensionality problem, and makes it more likely that the model is overfitting. On the other hand, using ensemble methods like random forests tend to lower generalization error (which error found caused by introducing new data), and using cross validation reduces this error further.
 
