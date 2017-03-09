@@ -3,6 +3,8 @@ title: "About the Author"
 permalink: /about/
 ---
 
+I'm Nathan Mitchell.
+
 I love researching and sharing newly uncovered insights.
 
 I studied physics to learn how the world around us works, and wrote a thesis exploring connections between fluid dynamics and meteorology, the Earth's core, and the sun. I took additional courses in journalism, and interviewed college officials and dug through budgets and California State Legislation in the search for answers.
