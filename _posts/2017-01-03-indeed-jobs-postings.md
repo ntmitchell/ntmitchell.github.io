@@ -6,9 +6,9 @@ date: 2017-01-03
 tags: Web scraping, Indeed.com, Data science jobs
 ---
 
-For this project, we wanted to find a way to predict the salaries for data science jobs in the Boston area.
+For this project, I wanted to find a way to predict the salaries for data science jobs in the Boston area.
 
-We analyzed search results from Indeed.com, an online jobs board, and highlighted key phrases in each job posting. We also determined if each job's salary is above a threshold value. We used logistic regression to model this data. Machine learning and python experience were the strongest predictors of salary. Machine learning, python and scientist were the strongest predictors of salary. The model had poor precision --- approximately 63% precision and recall, where random guesses could have achieved 57% --- which may have been caused by variability in the source salary data.
+I analyzed search results from Indeed.com, an online jobs board, and highlighted key phrases in each job posting. I also determined if each job's salary is above a threshold value. I used logistic regression to model this data. Machine learning and python experience were the strongest predictors of salary. Machine learning, python and scientist were the strongest predictors of salary. The model had low precision --- approximately 63% precision and recall, where random guesses could have achieved 57% --- which may have been caused by variability in the source salary data.
 
 [Part I](#Part-I) outlines the code used. [Part II](#Part-II) contains the writeup.
 
@@ -583,7 +583,7 @@ skl_logreg_model_coefficients = pd.DataFrame(data = skl_model.coef_, index = ['c
 
 # Part II: Report
 
-Since each company has different data science needs, we expected each job posting's requirements to vary by a large range. We therefore decided to focus our analysis on a few key pieces of information in each job posting, specifically:
+Since each company has different data science needs, I expected each job posting's requirements to vary by a large range. I therefore decided to focus our analysis on a few key pieces of information in each job posting, specifically:
 
 * If the job required a PhD or a bachelor's degree
 * If the job asked for experience with Python
@@ -593,7 +593,7 @@ Since each company has different data science needs, we expected each job postin
 * If the job function includes managing or directing responsibilities
 * The mean number of years of experience required
 
-Our goal is to predict which jobs will have a salary exceeding $90,000 based on these features. This value was chosen to represent the mean salary of our data, as is shown below. While we'd prefer to predict the salary more exactly, job salaries typically vary according to a number of factors (location, responsibilities, company policies, etc.) which means computing a salary range may be more useful.
+My goal was to predict which jobs will have a salary exceeding $90,000 based on these features. This value was chosen to represent the mean salary of our data, as is shown below. While I'd prefer to predict the salary more exactly, job salaries typically vary according to a number of factors (location, responsibilities, company policies, etc.) which means computing a salary range may be more useful.
 
 
 ```python
@@ -616,9 +616,9 @@ sns.plt.show()
 
 ### Procedure: Scraping Job Listings From Indeed.com
 
-By a rough estimation, only a fraction of jobs posts explicitly included more that one of these features. Rather than follow the hyperlink for each post and scanning each page, which would likely have formatting particular to each company, we reasoned that we could leverage Indeed.com's search to obtain information we could not readily access.
+By a rough estimation, only a fraction of jobs posts explicitly included more that one of these features. Rather than follow the hyperlink for each post and scanning each page, which would likely have formatting particular to each company, I reasoned that I could leverage Indeed.com's search to obtain information we could not readily access.
 
-Each job posting on Indeed.com has a unique ID. (When capturing the data, we noticed approximately 20% had duplicated IDs. We determined by inspection that these were reposted jobs, and therefore reasonably removed these data points.) For this reason could we employ a strategy where we changed the search query and kept track of which jobs were among the results, perform multiple keyword searches, and merge the resulting data on the for each ID. For example, the following are the first few jobs that required a PhD and mentioned 3 years of experience:
+Each job posting on Indeed.com has a unique ID. (When capturing the data, we noticed approximately 20% had duplicated IDs. I determined by inspection that these were reposted jobs, and therefore reasonably removed these data points.) For this reason I could employ a strategy where I changed the search query and kept track of which jobs were among the results, perform multiple keyword searches, and merge the resulting data on the for each ID. For example, the following are the first few jobs that required a PhD and mentioned 3 years of experience:
 
 
 ```python
@@ -702,9 +702,9 @@ An inspection of a sampling of the potentially unrelated jobs suggested that job
 
 ### Results and Analysis
 
-<u>The results may not be current since they are drawn from live webpages.</u>
+<u>The results are not be current since they were drawn from non-static webpages.</u>
 
-We analyzed postings for 1692 jobs. We removed 564 observations from the data, a 33.3% reduction, leaving 1128 observations. "Scientist" was by far the most common keyword, occurring in approximately 75% of observations, followed by PhD, "laboratory", and bachelor's degree (36%, 29% and 28%, respectively).
+I analyzed postings for 1692 jobs. I removed 564 observations from the data, a 33.3% reduction, leaving 1128 observations. "Scientist" was by far the most common keyword, occurring in approximately 75% of observations, followed by PhD, "laboratory", and bachelor's degree (36%, 29% and 28%, respectively).
 
 
 ```python
