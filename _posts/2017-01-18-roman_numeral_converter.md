@@ -1,5 +1,5 @@
 ---
-title: "Simple Roman Numeral Converter"
+title: "Simple Roman Numeral Converters"
 header:
   overlay_color: "#333"
 date: 2017-01-03
@@ -110,7 +110,7 @@ if success:
     print("All numbers converted correctly.")
 ```
 
-    `All numbers converted correctly.`
+    All numbers converted correctly.
 
 
 
