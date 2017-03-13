@@ -6,21 +6,17 @@ date: 2017-01-03
 tags: Python
 ---
 
-Here's the code from a python programming exercise for class.
-
-We were to write two functions that, when given any integer from 1 through 1000, could:
+Let's say you wanted to write two functions that, when given any integer from 1 through 1000, could:
 
 * Translate Roman numerals into the corresponding integers.
 * Convert integers into Roman numerals.
 
-Lastly, we wanted to verify that the functions work. We compared our outputs to a sample of "solved" numbers, and also fed the results from one function into the other to make sure they gave consistent results.
+Here's how you could do it.
 
 
 # Functions
 
 The numerals-to-number converter looks at a character, determines if it's corresponding value is less than or greater than its neighbor, and determines if the value should be added or subtracted from the total. For example, XXIV becomes [10, 10, -1, 5], which sums to 24.
-
-My number-to-numeral converter is a little more complicated. It relies on the fact that, aside from 1, individual Roman numerals are written to represent base-10 multiples of 5 or 10 (i.e., 5, 50, 500).
 
 ```python
 def str_to_int(numeral_string):
@@ -38,6 +34,19 @@ def str_to_int(numeral_string):
     return(sum(numbers))
 ```
 
+The number-to-numeral converter is a little more complicated. When you look at roman numerals, you can see that each value is 1 or 5 multiplied by a base-10 number:
+
+| Numeral | Value |
+|---|---|
+| I | 1 |
+| X | 10 |
+| C | 100 |
+| M | 1000 |
+| V | 5 |
+| L | 50 |
+| D | 500 |
+
+This program takes advantage of this. The function builds a dictionary where the keys are `10 ^ i` for `i` in `[0,3]` and `5 * 10 ^ i` for `i` in `[0,2]`. It takes in an integer and reads the digits right to left, and translates the value using the dictionary and the place of the digit (ones, tens, hundreds, thousands). The only complication is how 4 and 9 are represented, since placement of the symbols matters to indicate reduced values. (That is to say, for numerals `A` and `B`, `"AB" = B - A`.)
 
 ```python
 def int_to_string(integer_number, index = 0):
@@ -82,6 +91,7 @@ def int_to_string(integer_number, index = 0):
 
 # Unit testing
 
+It's always important to test programs. Here, I made sure the two functions worked by feeding the results from one into the other, and repeating this for all integers between 1 and 1000. Then I printed out 100 random numbers to individually inspect them.
 
 ```python
 from random import randint
@@ -100,7 +110,7 @@ if success:
     print("All numbers converted correctly.")
 ```
 
-    All numbers converted correctly.
+    `All numbers converted correctly.`
 
 
 
