@@ -21,7 +21,7 @@ I analyzed search results from Indeed.com, an online jobs board, and highlighted
 
 
 ```python
-# Webscraping
+# web scraping
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
@@ -45,7 +45,7 @@ params = {'legend.fontsize': 'x-large',
 plt.rcParams.update(params)
 ```
 
-#### Define webscraping functions
+#### Define web scraping functions
 
 
 ```python
@@ -679,7 +679,7 @@ This method of analysis is much simpler than the most obvious alternative strate
 
 Indeed.com's support documentation stated that only about 20% of the job postings in a search result include salary information. The search results deliver this information if available; otherwise, the salaries are estimated from past job postings and user-provided data.
 
-The webscraping provided a significant number of results that contained keywords like "data" and "science" but may be unrelated to data science. For example:
+The web scraping provided a significant number of results that contained keywords like "data" and "science" but may be unrelated to data science. For example:
 
 
 ```python
